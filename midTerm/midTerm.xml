@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<doc>
+	<assembly>
+		<name>midTerm</name>
+	</assembly>
+	<members>
+		<member name="T:midTerm.Controllers.QuestionsController">
+			<summary>
+				Question API Controller
+			</summary>
+		</member>
+		<member name="M:midTerm.Controllers.QuestionsController.#ctor(midTerm.Services.Abstractions.IQuestionService)">
+			<summary>
+				Question Constructor API Controller
+			</summary>
+			<param name="service">Question service</param>
+		</member>
+		<member name="M:midTerm.Controllers.QuestionsController.GetById(System.Int32)">
+			<summary>
+				Get a Question by ID
+			</summary>
+			<remarks>
+				Sample request:
+
+				GET /api/Questions/{id}
+
+			</remarks>
+			<param name="id">identifier of the item</param>
+			<returns>An Extended Question model item</returns>
+			<response code="200">All went well</response>
+			<response code="204">Item is not found</response>
+			<response code="400">If the item is null</response>
+			<response code="500">server side error</response>
+		</member>
+		<member name="M:midTerm.Controllers.QuestionsController.Get">
+			<summary>
+				Get all Questions
+			</summary>
+			<remarks>
+				Sample request:
+
+				GET /api/Questions
+
+			</remarks>
+			<returns>An List of Base Question model items</returns>
+			<response code="200">All went well</response>
+			<response code="204">Item is not found</response>
+			<response code="400">If the item is null</response>
+			<response code="500">server side error</response>
+		</member>
+		<member name="M:midTerm.Controllers.QuestionsController.Post(midTerm.Models.Models.Question.QuestionCreateModel)">
+			<summary>
+				Create a new Question
+			</summary>
+			<remarks>
+				Sample request:
+
+				POST /api/Question
+				{
+				"Text":"Your Question Here",
+				"Description": "A description of the Question here"
+				}
+
+			</remarks>
+			<param name="model">model to create</param>
+			<returns>created item</returns>
+			<response code="201">Returns the the created item</response>
+			<response code="400">If the item is null</response>
+			<response code="405">Method not allowed</response>
+			<response code="409">If the item is not created</response>
+			<response code="500">server side error</response>
+		</member>
+		<member name="M:midTerm.Controllers.QuestionsController.Put(System.Int32,midTerm.Models.Models.Question.QuestionUpdateModel)">
+			<summary>
+				Update an existing Question
+			</summary>
+			<remarks>
+				Sample request:
+
+				POST /api/Question/{id}
+				{
+				"id": 1,
+				"Text":"Your Question Here",
+				"Description": "A description of the Question here"
+				}
+
+			</remarks>
+			<param name="id">identifier of the item</param>
+			<param name="model">model to update</param>
+			<returns>updated item</returns>
+			<response code="201">Returns the the updated item</response>
+			<response code="400">If the item is null</response>
+			<response code="405">Method not allowed</response>
+			<response code="409">If the item is not created</response>
+			<response code="500">server side error</response>
+		</member>
+		<member name="M:midTerm.Controllers.QuestionsController.Delete(System.Int32)">
+			<summary>
+				Deletes an Item
+			</summary>
+			<remarks>
+				Sample request:
+
+				DELETE /api/Question/{id:int}
+
+			</remarks>
+			<param name="id">identifier of the item</param>
+			<returns>updated item</returns>
+			<response code="200">true if deleted</response>
+			<response code="400">If the item is not deleted</response>
+			<response code="405">Method not allowed</response>
+			<response code="500">server side error</response>
+		</member>
+	</members>
+</doc>

@@ -11,6 +11,9 @@ using midTerm.Infrastructure;
 using midTerm.Models.Profiles;
 using midTerm.Services.Abstractions;
 using midTerm.Services.Services;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace midTerm
 {
@@ -59,7 +62,22 @@ namespace midTerm
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "midTerm", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Final4187.WebApi",
+                    Description = "Internet Services Final Exam",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Mark Ruzinov 4187",
+                        Email = "mark@ruzinov.com",
+                    }
+                });
+                c.UseInlineDefinitionsForEnums();
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
         }
 

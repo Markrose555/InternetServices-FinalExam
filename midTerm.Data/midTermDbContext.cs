@@ -9,7 +9,8 @@ namespace midTerm.Data
         public MidTermDbContext(DbContextOptions<MidTermDbContext> options) 
             : base(options)
         {
-            
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            ChangeTracker.LazyLoadingEnabled = false;
         }
 
         public DbSet<Question> Questions { get; set; }

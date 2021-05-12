@@ -4,7 +4,7 @@ using midTerm.Models.Models.Answers;
 
 namespace midTerm.Models.Profiles
 {
-    class AnswersProfile : Profile
+    public class AnswersProfile : Profile
     {
         public AnswersProfile()
         {
@@ -13,8 +13,15 @@ namespace midTerm.Models.Profiles
             CreateMap<Answers, AnswersExtended>()
                 .ReverseMap();
 
-            CreateMap<AnswerCreateModel, Answers>();
-            CreateMap<AnswersUpdateModel, Answers>();
+            CreateMap<AnswerCreateModel, Answers>()
+                .ForMember(dest => dest.Id, opt => opt.Ignore())
+                .ForMember(dest => dest.Option, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore());
+
+                
+            CreateMap<AnswersUpdateModel, Answers>()
+                .ForMember(dest => dest.Option, opt => opt.Ignore())
+                .ForMember(dest => dest.User, opt => opt.Ignore());
         }
 
     }
